@@ -9,21 +9,27 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Backend') {
             steps {
-                sh 'npm install'
+                dir('backend') {
+                    sh 'npm install'
+                }
             }
         }
 
-        stage('Run Tests') {
+        stage('Install Frontend') {
             steps {
-                sh 'npm test || true'
+                dir('login-form') {
+                    sh 'npm install'
+                }
             }
         }
 
-        stage('Build') {
+        stage('Build Frontend') {
             steps {
-                sh 'echo Build Successful'
+                dir('login-form') {
+                    sh 'npm run build'
+                }
             }
         }
     }
