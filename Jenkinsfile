@@ -25,10 +25,10 @@ pipeline {
             }
         }
 
-        stage('Build Frontend') {
+        stage('Build Backend') {
             steps {
-                dir('login-form') {
-                    sh 'npm run build'
+                dir('backend') {
+                    sh 'echo Backend Ready'
                 }
             }
         }
