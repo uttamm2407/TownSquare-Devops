@@ -10,7 +10,7 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "http://13.233.96.62:30080";
 
 const getDaysAgo = (createdAt) => {
   if (!createdAt) return "";

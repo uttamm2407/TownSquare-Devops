@@ -64,7 +64,7 @@ const Analytics = () => {
       if (!token) return;
 
       try {
-        const response = await fetch("http://localhost:5000/api/complaints/community-complaints", {
+        const response = await fetch("http://13.233.96.62:30080/api/complaints/community-complaints", {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await response.json();

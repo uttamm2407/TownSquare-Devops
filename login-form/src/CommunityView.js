@@ -81,7 +81,7 @@ const CommunityView = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          "http://localhost:5000/api/complaints/community-complaints",
+          "http://13.233.96.62:30080/api/complaints/community-complaints",
           {
             method: "GET",
             headers: {

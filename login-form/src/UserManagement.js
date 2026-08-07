@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import userIcon from "./assets/user_icon.png";
 import AdminSidebar from "./AdminSidebar";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "http://13.233.96.62:30080";
 
 const UserManagement = () => {
     // State Management

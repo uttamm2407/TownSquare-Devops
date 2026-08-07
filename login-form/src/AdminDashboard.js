@@ -21,7 +21,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchComplaints = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/complaints/community-complaints", {
+        const response = await fetch("http://13.233.96.62:30080/api/complaints/community-complaints", {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -77,7 +77,7 @@ export default function AdminDashboard() {
 
   const handleStatusUpdate = async (id, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/complaints/complaint/${id}/status`, {
+      const response = await fetch(`http://13.233.96.62:30080/api/complaints/complaint/${id}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

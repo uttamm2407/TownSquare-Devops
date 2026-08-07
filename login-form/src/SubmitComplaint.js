@@ -211,7 +211,7 @@ export default function SubmitComplaint({ onLogout }) {
   const getLocationName = async (lat, lng, updateLabel = true) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/complaints/location-name?lat=${lat}&lon=${lng}`,
+        `http://13.233.96.62:30080/api/complaints/location-name?lat=${lat}&lon=${lng}`,
         { method: "GET" }
       );
 
@@ -335,7 +335,7 @@ export default function SubmitComplaint({ onLogout }) {
       });
 
       const response = await fetch(
-        "http://localhost:5000/api/complaints/submit-complaint",
+        "http://13.233.96.62:30080/api/complaints/submit-complaint",
         { method: "POST", body: formData }
       );
 
