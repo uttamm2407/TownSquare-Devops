@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKERHUB = "uttamm2407"
+    }
+
     stages {
 
         stage('Checkout') {
@@ -25,10 +29,42 @@ pipeline {
             }
         }
 
-        stage('Build Backend') {
+        stage('Build Frontend') {
             steps {
-                dir('backend') {
-                    sh 'echo Backend Ready'
+                dir('login-form') {
+                    sh '''
+                    export NODE_OPTIONS="--max-old-space-size=2048"
+                    npm run build
+                    '''
+                }
+            }
+        }
+
+        stage('Build Backend Docker Image') {
+            steps {
+                sh 'docker build -t uttamm2407/townsquare-backend:v1 ./backend'
+            }
+        }
+
+        stage('Build Frontend Docker Image') {
+            steps {
+                sh 'docker build -t uttamm2407/townsquare-frontend:v1 ./login-form'
+            }
+        }
+
+        stage('Push Images to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh '''
+                    echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+
+                    docker push uttamm2407/townsquare-backend:v1
+                    docker push uttamm2407/townsquare-frontend:v1
+                    '''
                 }
             }
         }
