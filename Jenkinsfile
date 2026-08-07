@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKERHUB = "uttamm2407"
-    }
-
     stages {
 
         stage('Checkout') {
@@ -25,17 +21,6 @@ pipeline {
             steps {
                 dir('login-form') {
                     sh 'npm install'
-                }
-            }
-        }
-
-        stage('Build Frontend') {
-            steps {
-                dir('login-form') {
-                    sh '''
-                    export NODE_OPTIONS="--max-old-space-size=2048"
-                    npm run build
-                    '''
                 }
             }
         }
@@ -68,5 +53,6 @@ pipeline {
                 }
             }
         }
+
     }
 }
